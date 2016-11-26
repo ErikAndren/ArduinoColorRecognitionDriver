@@ -90,7 +90,7 @@
  * (600 * 2 / 100) * 1000 it is too much.
  *
  */
-#define MAX_FRQUENCY_IN_HZ 1000
+#define MAX_FREQUENCY_IN_HZ 1000
 
 class ColorRecognitionTCS230: public ColorRecognition {
 private:
@@ -230,9 +230,9 @@ private:
      */
     ColorRecognitionTCS230()
             : s2Pin(0), s3Pin(0), outPin(0), count(0), currentFilter(CLEAR_FILTER) {
-        whiteBalanceFrequencies[0] = MAX_FRQUENCY_IN_HZ;
-        whiteBalanceFrequencies[1] = MAX_FRQUENCY_IN_HZ;
-        whiteBalanceFrequencies[2] = MAX_FRQUENCY_IN_HZ;
+        whiteBalanceFrequencies[0] = MAX_FREQUENCY_IN_HZ;
+        whiteBalanceFrequencies[1] = MAX_FREQUENCY_IN_HZ;
+        whiteBalanceFrequencies[2] = MAX_FREQUENCY_IN_HZ;
     }
 
     /**
