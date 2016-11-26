@@ -1,13 +1,13 @@
 /**
  * Arduino - Color Recognition Sensor
- * 
+ *
  * ColorRecognitionTCS230.h
- * 
+ *
  * The abstract class for the Color Recognition TCS230 sensor.
- * 
+ *
  * Thanks https://github.com/combs for your contribution to prevent overflow
  * when returning the frequencies.
- * 
+ *
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
@@ -20,7 +20,7 @@
 
 ColorRecognitionTCS230 ColorRecognitionTCS230::instance;
 
-void ColorRecognitionTCS230::initialize(unsigned char outPin, unsigned char s2Pin, unsigned char s3Pin) {
+void ColorRecognitionTCS230::initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s3Pin) {
     this->s2Pin = s2Pin;
     this->s3Pin = s3Pin;
     this->outPin = outPin;
@@ -66,28 +66,28 @@ void ColorRecognitionTCS230::timerInterruptHandler() {
     Timer1.setPeriod(1000000);
 }
 
-unsigned char ColorRecognitionTCS230::getRed() {
+uint8_t ColorRecognitionTCS230::getRed() {
     if (lastFrequencies[0] > whiteBalanceFrequencies[0]) {
         return 255;
     }
-    return (unsigned char) map(lastFrequencies[0], 0, whiteBalanceFrequencies[0], 0, 255);
+    return (uint8_t) map(lastFrequencies[0], 0, whiteBalanceFrequencies[0], 0, 255);
 }
 
-unsigned char ColorRecognitionTCS230::getGreen() {
+uint8_t ColorRecognitionTCS230::getGreen() {
     if (lastFrequencies[1] > whiteBalanceFrequencies[1]) {
         return 255;
     }
-    return (unsigned char) map(lastFrequencies[1], 0, whiteBalanceFrequencies[1], 0, 255);
+    return (uint8_t) map(lastFrequencies[1], 0, whiteBalanceFrequencies[1], 0, 255);
 }
 
-unsigned char ColorRecognitionTCS230::getBlue() {
+uint8_t ColorRecognitionTCS230::getBlue() {
     if (lastFrequencies[2] > whiteBalanceFrequencies[2]) {
         return 255;
     }
-    return (unsigned char) map(lastFrequencies[2], 0, whiteBalanceFrequencies[2], 0, 255);
+    return (uint8_t) map(lastFrequencies[2], 0, whiteBalanceFrequencies[2], 0, 255);
 }
 
-bool ColorRecognitionTCS230::fillRGB(unsigned char buf[3]) {
+bool ColorRecognitionTCS230::fillRGB(uint8_t buf[3]) {
     buf[0] = getRed();
     buf[1] = getGreen();
     buf[2] = getBlue();
@@ -95,7 +95,7 @@ bool ColorRecognitionTCS230::fillRGB(unsigned char buf[3]) {
 }
 
 void ColorRecognitionTCS230::setFilter(Filter filter) {
-    unsigned char s2 = LOW, s3 = LOW;
+    uint8_t s2 = LOW, s3 = LOW;
     instance.currentFilter = filter;
     if (filter == CLEAR_FILTER || filter == GREEN_FILTER) {
         s2 = HIGH;
