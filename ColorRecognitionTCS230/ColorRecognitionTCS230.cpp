@@ -24,10 +24,12 @@ void ColorRecognitionTCS230::initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s
     this->s2Pin = s2Pin;
     this->s3Pin = s3Pin;
     this->outPin = outPin;
-    this->currentFilter = CLEAR_FILTER;
+    this->currentFilter = RED_FILTER;
     pinMode(s2Pin, OUTPUT);
     pinMode(s3Pin, OUTPUT);
     pinMode(outPin, INPUT);
+
+    instance.count = 0;
     Timer1.initialize();
     Timer1.attachInterrupt(ColorRecognitionTCS230::timerInterruptHandler);
     attachInterrupt((outPin - 2), ColorRecognitionTCS230::externalInterruptHandler, RISING);
