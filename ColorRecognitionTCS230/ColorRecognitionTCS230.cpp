@@ -129,16 +129,33 @@ bool ColorRecognitionTCS230::fillRGB(uint8_t buf[3]) {
 }
 
 void ColorRecognitionTCS230::setFilter(Filter filter) {
-    uint8_t s2 = LOW, s3 = LOW;
-    instance.currentFilter = filter;
-    if (filter == CLEAR_FILTER || filter == GREEN_FILTER) {
-        s2 = HIGH;
-    }
-    if (filter == BLUE_FILTER || filter == GREEN_FILTER) {
-        s3 = HIGH;
-    }
-    digitalWrite(instance.s2Pin, s2);
-    digitalWrite(instance.s3Pin, s3);
+  uint8_t s2;
+  uint8_t s3;
+  instance.currentFilter = filter;
+
+  switch (filter) {
+  case RED_FILTER:
+    s2 = LOW;
+    s3 = LOW;
+    break;
+
+  case GREEN_FILTER:
+    s2 = HIGH;
+    s3 = LOW;
+    break;
+
+  case BLUE_FILTER:
+    s2 = LOW;
+    s3 = HIGH;
+    break;
+
+  case CLEAR_FILTER:
+    s2 = HIGH;
+    s3 = HIGH;
+    break;
+  }
+  digitalWrite(instance.s2Pin, s2);
+  digitalWrite(instance.s3Pin, s3);
 }
 
 #endif /* __ARDUINO_DRIVER_COLOR_RECOGNITION_TCS230_CPP__ */
