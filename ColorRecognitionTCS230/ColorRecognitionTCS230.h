@@ -94,7 +94,7 @@
 #define MAX_FREQUENCY_IN_HZ 1000
 
 /* Defines the measure period for each color */
-#define COLOR_PERIOD_US 1000000
+#define COLOR_PERIOD_US 333333
 
 class ColorRecognitionTCS230: public ColorRecognition {
 private:
