@@ -57,16 +57,31 @@ void ColorRecognitionTCS230::timerInterruptHandler() {
     switch (instance.currentFilter) {
     case RED_FILTER:
         instance.lastFrequencies[0] = instance.count;
+	instance.whiteBalanceFrequencies[0] = max(instance.whiteBalanceFrequencies[0],
+						  instance.count);
+	instance.blackBalanceFrequencies[0] = min(instance.blackBalanceFrequencies[0],
+						  instance.count);
+
         setFilter(GREEN_FILTER);
         break;
 
     case GREEN_FILTER:
         instance.lastFrequencies[1] = instance.count;
+	instance.whiteBalanceFrequencies[1] = max(instance.whiteBalanceFrequencies[1],
+						  instance.count);
+	instance.blackBalanceFrequencies[1] = min(instance.blackBalanceFrequencies[1],
+						  instance.count);
+
         setFilter(BLUE_FILTER);
         break;
 
     case BLUE_FILTER:
         instance.lastFrequencies[2] = instance.count;
+	instance.whiteBalanceFrequencies[2] = max(instance.whiteBalanceFrequencies[2],
+						  instance.count);
+	instance.blackBalanceFrequencies[2] = min(instance.blackBalanceFrequencies[2],
+						  instance.count);
+
         setFilter(RED_FILTER);
         break;
 
