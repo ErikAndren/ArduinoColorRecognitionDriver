@@ -73,7 +73,7 @@ void ColorRecognitionTCS230::timerInterruptHandler() {
         break;
     }
     instance.count = 0;
-    Timer1.setPeriod(1000000);
+    Timer1.setPeriod(COLOR_PERIOD_US);
 }
 
 void ColorRecognitionTCS230::getFreqs(uint32_t freqs[3]) {

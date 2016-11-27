@@ -90,7 +90,11 @@
  * (600 * 2 / 100) * 1000 it is too much.
  *
  */
+
 #define MAX_FREQUENCY_IN_HZ 1000
+
+/* Defines the measure period for each color */
+#define COLOR_PERIOD_US 1000000
 
 class ColorRecognitionTCS230: public ColorRecognition {
 private:
