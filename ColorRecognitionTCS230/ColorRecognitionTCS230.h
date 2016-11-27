@@ -84,7 +84,7 @@
  * maximum light intensity
  *
  * MAX: 600KHz (I don't belive)
- * we are using: 2% of such frequence
+ * we are using: 2% of such frequency
  * we are usin:g 1 second between the interrupts.
  *
  * (600 * 2 / 100) * 1000 it is too much.
@@ -115,17 +115,17 @@ private:
     /**
      * Holds the number of interrupts of the current filter.
      */
-    int32_t count;
+    uint32_t count;
 
     /**
      * Holds the last count for each filter.
      */
-    int32_t lastFrequencies[3];
+    uint32_t lastFrequencies[3];
 
     /**
      * Holds the maximum frequencies.
      */
-    int32_t whiteBalanceFrequencies[3];
+    uint32_t whiteBalanceFrequencies[3];
 
     /**
      * Singleton. The instance.
