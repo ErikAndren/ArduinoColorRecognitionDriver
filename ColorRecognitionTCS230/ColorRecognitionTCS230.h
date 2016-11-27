@@ -190,21 +190,21 @@ public:
     /**
      * Returns the green color intensity.
      *
-     * @retun               The green color intensity.
+     * @return               The green color intensity.
      */
     uint8_t getGreen();
 
     /**
      * Returns the blue color intensity.
      *
-     * @retun               The blue color intensity.
+     * @return               The blue color intensity.
      */
     uint8_t getBlue();
 
     /**
      * Returns the blue color intensity.
      *
-     * @retun               The blue color intensity.
+     * @return               The blue color intensity.
      */
     bool fillRGB(uint8_t buf[3]);
 
