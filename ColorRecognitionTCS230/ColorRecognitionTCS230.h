@@ -84,8 +84,8 @@
  * maximum light intensity
  *
  * MAX: 600KHz (I don't belive)
- * we are usin: 2% of such frequence
- * we are usin: 1 second between the interrupts.
+ * we are using: 2% of such frequence
+ * we are usin:g 1 second between the interrupts.
  *
  * (600 * 2 / 100) * 1000 it is too much.
  *
