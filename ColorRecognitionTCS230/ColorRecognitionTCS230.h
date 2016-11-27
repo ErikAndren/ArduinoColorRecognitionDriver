@@ -128,6 +128,11 @@ private:
     uint32_t whiteBalanceFrequencies[3];
 
     /**
+     * Holds the minimum frequencies.
+     */
+    uint32_t blackBalanceFrequencies[3];
+
+    /**
      * Singleton. The instance.
      */
     static ColorRecognitionTCS230 instance;
@@ -179,6 +184,13 @@ public:
      * It tells what is considered white.
      */
     void adjustWhiteBalance();
+
+    /**
+     * Store the current read as the minimum frequency for each color.
+     *
+     * It tells what is considered black.
+     */
+    void adjustBlackBalance();
 
     /**
      * Returns the red color intensity.

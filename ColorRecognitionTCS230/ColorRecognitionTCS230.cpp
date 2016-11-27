@@ -40,6 +40,13 @@ void ColorRecognitionTCS230::adjustWhiteBalance() {
     instance.whiteBalanceFrequencies[2] = instance.lastFrequencies[2];
 }
 
+void ColorRecognitionTCS230::adjustBlackBalance() {
+    delay(4000);
+    instance.blackBalanceFrequencies[0] = instance.lastFrequencies[0];
+    instance.blackBalanceFrequencies[1] = instance.lastFrequencies[1];
+    instance.blackBalanceFrequencies[2] = instance.lastFrequencies[2];
+}
+
 void ColorRecognitionTCS230::externalInterruptHandler() {
     instance.count++;
 }
