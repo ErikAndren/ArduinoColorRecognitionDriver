@@ -250,9 +250,13 @@ private:
      */
     ColorRecognitionTCS230()
             : s2Pin(0), s3Pin(0), outPin(0), count(0), currentFilter(CLEAR_FILTER) {
-        whiteBalanceFrequencies[0] = MAX_FREQUENCY_IN_HZ;
-        whiteBalanceFrequencies[1] = MAX_FREQUENCY_IN_HZ;
-        whiteBalanceFrequencies[2] = MAX_FREQUENCY_IN_HZ;
+      whiteBalanceFrequencies[0] = 0;
+      whiteBalanceFrequencies[1] = 0;
+      whiteBalanceFrequencies[2] = 0;
+      blackBalanceFrequencies[0] = 0xFFFFFFFF;
+      blackBalanceFrequencies[1] = 0xFFFFFFFF;
+      blackBalanceFrequencies[2] = 0xFFFFFFFF;
+
     }
 
     /**
