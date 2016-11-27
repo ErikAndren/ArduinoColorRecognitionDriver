@@ -37,16 +37,16 @@ void ColorRecognitionTCS230::initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s
 
 void ColorRecognitionTCS230::adjustWhiteBalance() {
     delay(4000);
-    instance.whiteBalanceFrequencies[0] = instance.lastFrequencies[0];
-    instance.whiteBalanceFrequencies[1] = instance.lastFrequencies[1];
-    instance.whiteBalanceFrequencies[2] = instance.lastFrequencies[2];
+    instance.whiteBalanceFrequencies[RED] = instance.lastFrequencies[RED];
+    instance.whiteBalanceFrequencies[GREEN] = instance.lastFrequencies[GREEN];
+    instance.whiteBalanceFrequencies[BLUE] = instance.lastFrequencies[BLUE];
 }
 
 void ColorRecognitionTCS230::adjustBlackBalance() {
     delay(4000);
-    instance.blackBalanceFrequencies[0] = instance.lastFrequencies[0];
-    instance.blackBalanceFrequencies[1] = instance.lastFrequencies[1];
-    instance.blackBalanceFrequencies[2] = instance.lastFrequencies[2];
+    instance.blackBalanceFrequencies[RED] = instance.lastFrequencies[RED];
+    instance.blackBalanceFrequencies[GREEN] = instance.lastFrequencies[GREEN];
+    instance.blackBalanceFrequencies[BLUE] = instance.lastFrequencies[BLUE];
 }
 
 void ColorRecognitionTCS230::externalInterruptHandler() {
@@ -56,30 +56,30 @@ void ColorRecognitionTCS230::externalInterruptHandler() {
 void ColorRecognitionTCS230::timerInterruptHandler() {
     switch (instance.currentFilter) {
     case RED_FILTER:
-        instance.lastFrequencies[0] = instance.count;
-	instance.whiteBalanceFrequencies[0] = max(instance.whiteBalanceFrequencies[0],
+        instance.lastFrequencies[RED] = instance.count;
+	instance.whiteBalanceFrequencies[RED] = max(instance.whiteBalanceFrequencies[RED],
 						  instance.count);
-	instance.blackBalanceFrequencies[0] = min(instance.blackBalanceFrequencies[0],
+	instance.blackBalanceFrequencies[RED] = min(instance.blackBalanceFrequencies[RED],
 						  instance.count);
 
         setFilter(GREEN_FILTER);
         break;
 
     case GREEN_FILTER:
-        instance.lastFrequencies[1] = instance.count;
-	instance.whiteBalanceFrequencies[1] = max(instance.whiteBalanceFrequencies[1],
+        instance.lastFrequencies[GREEN] = instance.count;
+	instance.whiteBalanceFrequencies[GREEN] = max(instance.whiteBalanceFrequencies[GREEN],
 						  instance.count);
-	instance.blackBalanceFrequencies[1] = min(instance.blackBalanceFrequencies[1],
+	instance.blackBalanceFrequencies[GREEN] = min(instance.blackBalanceFrequencies[GREEN],
 						  instance.count);
 
         setFilter(BLUE_FILTER);
         break;
 
     case BLUE_FILTER:
-        instance.lastFrequencies[2] = instance.count;
-	instance.whiteBalanceFrequencies[2] = max(instance.whiteBalanceFrequencies[2],
+        instance.lastFrequencies[BLUE] = instance.count;
+	instance.whiteBalanceFrequencies[BLUE] = max(instance.whiteBalanceFrequencies[BLUE],
 						  instance.count);
-	instance.blackBalanceFrequencies[2] = min(instance.blackBalanceFrequencies[2],
+	instance.blackBalanceFrequencies[BLUE] = min(instance.blackBalanceFrequencies[BLUE],
 						  instance.count);
 
         setFilter(RED_FILTER);
@@ -94,9 +94,9 @@ void ColorRecognitionTCS230::timerInterruptHandler() {
 }
 
 void ColorRecognitionTCS230::getFreqs(uint32_t freqs[3]) {
-  freqs[0] = instance.lastFrequencies[0];
-  freqs[1] = instance.lastFrequencies[1];
-  freqs[2] = instance.lastFrequencies[2];
+  freqs[RED] = instance.lastFrequencies[RED];
+  freqs[GREEN] = instance.lastFrequencies[GREEN];
+  freqs[BLUE] = instance.lastFrequencies[BLUE];
 }
 
 uint32_t ColorRecognitionTCS230::getCount() {
@@ -104,27 +104,27 @@ uint32_t ColorRecognitionTCS230::getCount() {
 }
 
 uint8_t ColorRecognitionTCS230::getRed() {
-    return (uint8_t) map(lastFrequencies[0],
-			 blackBalanceFrequencies[0], whiteBalanceFrequencies[0],
+    return (uint8_t) map(lastFrequencies[RED],
+			 blackBalanceFrequencies[RED], whiteBalanceFrequencies[RED],
 			 0, 255);
 }
 
 uint8_t ColorRecognitionTCS230::getGreen() {
-    return (uint8_t) map(lastFrequencies[1],
-			 blackBalanceFrequencies[1], whiteBalanceFrequencies[1],
+    return (uint8_t) map(lastFrequencies[GREEN],
+			 blackBalanceFrequencies[GREEN], whiteBalanceFrequencies[GREEN],
 			 0, 255);
 }
 
 uint8_t ColorRecognitionTCS230::getBlue() {
-    return (uint8_t) map(lastFrequencies[2],
-			 blackBalanceFrequencies[2], whiteBalanceFrequencies[2],
+    return (uint8_t) map(lastFrequencies[BLUE],
+			 blackBalanceFrequencies[BLUE], whiteBalanceFrequencies[BLUE],
 			 0, 255);
 }
 
 bool ColorRecognitionTCS230::fillRGB(uint8_t buf[3]) {
-    buf[0] = getRed();
-    buf[1] = getGreen();
-    buf[2] = getBlue();
+    buf[RED] = getRed();
+    buf[GREEN] = getGreen();
+    buf[BLUE] = getBlue();
     return true;
 }
 

@@ -96,6 +96,11 @@
 /* Defines the measure period for each color */
 #define COLOR_PERIOD_US 333333
 
+#define RED   0
+#define GREEN 1
+#define BLUE  2
+#define CLEAR 3
+
 class ColorRecognitionTCS230: public ColorRecognition {
 private:
 
@@ -147,10 +152,10 @@ public:
      * Filter color enumeration.
      */
     enum Filter {
-        RED_FILTER,
-        GREEN_FILTER,
-        BLUE_FILTER,
-        CLEAR_FILTER
+        RED_FILTER = RED,
+        GREEN_FILTER = GREEN,
+        BLUE_FILTER = BLUE,
+        CLEAR_FILTER = CLEAR
     };
 
     /**
@@ -250,12 +255,12 @@ private:
      */
     ColorRecognitionTCS230()
             : s2Pin(0), s3Pin(0), outPin(0), count(0), currentFilter(CLEAR_FILTER) {
-      whiteBalanceFrequencies[0] = 0;
-      whiteBalanceFrequencies[1] = 0;
-      whiteBalanceFrequencies[2] = 0;
-      blackBalanceFrequencies[0] = 0xFFFFFFFF;
-      blackBalanceFrequencies[1] = 0xFFFFFFFF;
-      blackBalanceFrequencies[2] = 0xFFFFFFFF;
+      whiteBalanceFrequencies[RED] = 0;
+      whiteBalanceFrequencies[GREEN] = 0;
+      whiteBalanceFrequencies[BLUE] = 0;
+      blackBalanceFrequencies[RED] = 0xFFFFFFFF;
+      blackBalanceFrequencies[GREEN] = 0xFFFFFFFF;
+      blackBalanceFrequencies[BLUE] = 0xFFFFFFFF;
 
     }
 
