@@ -35,20 +35,6 @@ void ColorRecognitionTCS230::initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s
     attachInterrupt((outPin - 2), ColorRecognitionTCS230::externalInterruptHandler, RISING);
 }
 
-void ColorRecognitionTCS230::adjustWhiteBalance() {
-    delay(4000);
-    instance.whiteBalanceFrequencies[RED] = instance.lastFrequencies[RED];
-    instance.whiteBalanceFrequencies[GREEN] = instance.lastFrequencies[GREEN];
-    instance.whiteBalanceFrequencies[BLUE] = instance.lastFrequencies[BLUE];
-}
-
-void ColorRecognitionTCS230::adjustBlackBalance() {
-    delay(4000);
-    instance.blackBalanceFrequencies[RED] = instance.lastFrequencies[RED];
-    instance.blackBalanceFrequencies[GREEN] = instance.lastFrequencies[GREEN];
-    instance.blackBalanceFrequencies[BLUE] = instance.lastFrequencies[BLUE];
-}
-
 void ColorRecognitionTCS230::externalInterruptHandler() {
     instance.count++;
 }

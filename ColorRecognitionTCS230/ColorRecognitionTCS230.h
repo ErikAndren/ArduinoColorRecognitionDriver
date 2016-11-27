@@ -188,20 +188,6 @@ public:
     void initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s3Pin);
 
     /**
-     * Store the current read as the maximum frequency for each color.
-     *
-     * It tells what is considered white.
-     */
-    void adjustWhiteBalance();
-
-    /**
-     * Store the current read as the minimum frequency for each color.
-     *
-     * It tells what is considered black.
-     */
-    void adjustBlackBalance();
-
-    /**
      * Returns the red color intensity.
      *
      * @return               The red color intensity.
