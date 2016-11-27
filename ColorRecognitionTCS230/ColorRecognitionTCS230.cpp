@@ -104,24 +104,21 @@ uint32_t ColorRecognitionTCS230::getCount() {
 }
 
 uint8_t ColorRecognitionTCS230::getRed() {
-    if (lastFrequencies[0] > whiteBalanceFrequencies[0]) {
-        return 255;
-    }
-    return (uint8_t) map(lastFrequencies[0], 0, whiteBalanceFrequencies[0], 0, 255);
+    return (uint8_t) map(lastFrequencies[0],
+			 blackBalanceFrequencies[0], whiteBalanceFrequencies[0],
+			 0, 255);
 }
 
 uint8_t ColorRecognitionTCS230::getGreen() {
-    if (lastFrequencies[1] > whiteBalanceFrequencies[1]) {
-        return 255;
-    }
-    return (uint8_t) map(lastFrequencies[1], 0, whiteBalanceFrequencies[1], 0, 255);
+    return (uint8_t) map(lastFrequencies[1],
+			 blackBalanceFrequencies[1], whiteBalanceFrequencies[1],
+			 0, 255);
 }
 
 uint8_t ColorRecognitionTCS230::getBlue() {
-    if (lastFrequencies[2] > whiteBalanceFrequencies[2]) {
-        return 255;
-    }
-    return (uint8_t) map(lastFrequencies[2], 0, whiteBalanceFrequencies[2], 0, 255);
+    return (uint8_t) map(lastFrequencies[2],
+			 blackBalanceFrequencies[2], whiteBalanceFrequencies[2],
+			 0, 255);
 }
 
 bool ColorRecognitionTCS230::fillRGB(uint8_t buf[3]) {
