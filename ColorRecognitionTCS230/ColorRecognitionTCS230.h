@@ -223,6 +223,10 @@ public:
      */
     static void setFilter(Filter filter);
 
+    void getFreqs(uint32_t freqs[3]);
+
+    uint32_t getCount();
+
 private:
 
     /**

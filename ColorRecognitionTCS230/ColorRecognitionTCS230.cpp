@@ -46,24 +46,37 @@ void ColorRecognitionTCS230::externalInterruptHandler() {
 
 void ColorRecognitionTCS230::timerInterruptHandler() {
     switch (instance.currentFilter) {
-    case CLEAR_FILTER:
-        setFilter(RED_FILTER);
-        break;
     case RED_FILTER:
         instance.lastFrequencies[0] = instance.count;
         setFilter(GREEN_FILTER);
         break;
+
     case GREEN_FILTER:
         instance.lastFrequencies[1] = instance.count;
         setFilter(BLUE_FILTER);
         break;
+
     case BLUE_FILTER:
         instance.lastFrequencies[2] = instance.count;
+        setFilter(RED_FILTER);
+        break;
+
+    case CLEAR_FILTER:
         setFilter(RED_FILTER);
         break;
     }
     instance.count = 0;
     Timer1.setPeriod(1000000);
+}
+
+void ColorRecognitionTCS230::getFreqs(uint32_t freqs[3]) {
+  freqs[0] = instance.lastFrequencies[0];
+  freqs[1] = instance.lastFrequencies[1];
+  freqs[2] = instance.lastFrequencies[2];
+}
+
+uint32_t ColorRecognitionTCS230::getCount() {
+  return instance.count;
 }
 
 uint8_t ColorRecognitionTCS230::getRed() {
