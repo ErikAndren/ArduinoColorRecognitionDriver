@@ -24,7 +24,7 @@ void ColorRecognitionTCS230::initialize(uint8_t outPin, uint8_t s2Pin, uint8_t s
     this->s2Pin = s2Pin;
     this->s3Pin = s3Pin;
     this->outPin = outPin;
-    this->currentFilter = RED_FILTER;
+    this->currentFilter = CLEAR_FILTER;
     pinMode(s2Pin, OUTPUT);
     pinMode(s3Pin, OUTPUT);
     pinMode(outPin, INPUT);
