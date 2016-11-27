@@ -183,7 +183,7 @@ public:
     /**
      * Returns the red color intensity.
      *
-     * @retun               The red color intensity.
+     * @return               The red color intensity.
      */
     uint8_t getRed();
 
