@@ -234,6 +234,9 @@ public:
     void getWhiteBal(uint32_t bal[3]);
     void getBlackBal(uint32_t bal[3]);
 
+    void setWhiteBal(uint32_t bal[3]);
+    void setBlackBal(uint32_t bal[3]);
+
     uint32_t getCount();
 
 private:

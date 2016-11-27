@@ -97,6 +97,18 @@ void ColorRecognitionTCS230::getBlackBal(uint32_t bal[3]) {
   bal[BLUE] = instance.blackBalanceFrequencies[BLUE];
 }
 
+void ColorRecognitionTCS230::setWhiteBal(uint32_t bal[3]) {
+  instance.whiteBalanceFrequencies[RED] = bal[RED];
+  instance.whiteBalanceFrequencies[GREEN] = bal[GREEN];
+  instance.whiteBalanceFrequencies[BLUE] = bal[BLUE];
+}
+
+void ColorRecognitionTCS230::setBlackBal(uint32_t bal[3]) {
+  instance.blackBalanceFrequencies[RED] = bal[RED];
+  instance.blackBalanceFrequencies[GREEN] = bal[GREEN];
+  instance.blackBalanceFrequencies[BLUE] = bal[BLUE];
+}
+
 uint32_t ColorRecognitionTCS230::getCount() {
   return instance.count;
 }
